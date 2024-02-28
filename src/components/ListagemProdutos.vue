@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 
-const produtos = ref([])
+const produtos = ref([]);
 
 onMounted(async () => {
   const response = await axios.get('https://fakestoreapi.com/products')
@@ -17,66 +17,62 @@ const formatPrice = (price) => `R$ ${price.toFixed(2).replace('.', ',')}`;
     <h1>Produtos</h1>
     <div class="container">
       <div class="card" v-for="produto in produtos" :key="produto.id">
-        <h1 class="card--title">{{ produto.title }}</h1>
-        <p>{{ produto.description }}</p>
-        <p>{{ formatPrice(produto.price) }}</p>
-        <img class="card--avatar" :src="produto.image" :alt="produto.title" />
+        <h1 class="produto-nome">{{ produto.title }}</h1>
+        <p>{{ produto.description.substring(0, 150) }}</p>
+        <p class="ler-mais">Ler Mais...</p>
+        <img class="produto-imagem" :src="produto.image" :alt="produto.title" />
+        <p class="produto-preco">{{ formatPrice(produto.price) }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-@media (max-width: 768px) {
-  .container {
-    gap: 0.5rem;
-  }
-  .card {
-    width: 90%;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .card {
-    width: 22rem;
-  }
-}
 h1 {
   text-align: center;
-  margin: 2rem;
+  margin-top: 1rem;
+}
+img{
+  width: 50%;
+  display: flex;
+  margin: auto;
 }
 .container {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
-  align-items: center;
-  margin: auto;
-  padding: 1rem 0;
 }
 .card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  width: 15rem;
-  height: 25rem;
   background: #fff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 10px;
-  margin: 20px;
-  overflow: hidden;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-.card--avatar {
-  width: 100%;
-  height: 100%;
+.produto-nome {
+  color: black;
+  font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
-.card--title {
-  color: #222;
-  font-weight: 700;
-  text-transform: capitalize;
-  font-size: 1.1rem;
+.produto-preco {
+  background-color: lightgreen;
+  width: fit-content;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  font-size: 1.2rem;
   margin-top: 0.5rem;
+}
+.ler-mais {
+  cursor: pointer;
+  margin-top: 0.5rem;
+  color: #007bff;
+}
+.ler-mais:hover {
+  text-decoration: underline;
 }
 </style>
