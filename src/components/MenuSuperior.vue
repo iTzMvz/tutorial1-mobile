@@ -11,7 +11,7 @@ const menuAberto = ref(false);
 <template>
     <header>
       <div class="header--logo">
-        <img src="@/assets/logoFakeStore.png" alt="Logo" />
+        <img src="../../public/logo.png" alt="Logo" />
         <h1>FakeStore</h1>
       </div>
       <nav>
@@ -45,9 +45,9 @@ const menuAberto = ref(false);
     align-items: center;
   }
   .header--logo img {
-    width: 3rem;
+    width: 6rem;
     height: 3rem;
-    margin-right: 0.5rem;
+    margin-right: 0.5rem; 
   }
   nav ul {
     display: flex;
