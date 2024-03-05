@@ -1,8 +1,10 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
+import  { useScreen } from '@/composables/screen'
 
 const produtos = ref([]);
+const { browserWidth, deviceWidth, isMobile } = useScreen();
 
 onMounted(async () => {
   const response = await axios.get('https://fakestoreapi.com/products')
@@ -14,16 +16,36 @@ const formatPrice = (price) => `R$ ${price.toFixed(2).replace('.', ',')}`;
 
 <template>
   <div>
+    <h1>
+       Produtos - {{ browserWidth }} - {{ deviceWidth }} - {{
+      isMobile}} 
+      <span v-if="isMobile">É móvel</span>
+    </h1>
     <h1>Produtos</h1>
     <div class="container">
       <div class="card" v-for="produto in produtos" :key="produto.id">
         <h1 class="produto-nome">{{ produto.title }}</h1>
-        <p>{{ produto.description.substring(0, 150) }}</p>
+        <p>{{ produto.description.substring(0, 150) }}...</p>
         <p class="ler-mais">Ler Mais...</p>
         <img class="produto-imagem" :src="produto.image" :alt="produto.title" />
         <p class="produto-preco">{{ formatPrice(produto.price) }}</p>
       </div>
     </div>
+  </div>
+  <div class="rodape">
+    <div class="conteudo">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta quasi quis saepe id itaque accusantium quia possimus corporis aut aliquid iusto ducimus dolorem, rerum nulla veniam, eius distinctio, nobis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident porro obcaecati consectetur vero ipsam, sit iste esse sunt dolor corporis corrupti, veritatis quidem! Tenetur corrupti quidem, ratione quas saepe quod.
+    </div>
+    <div class="conteudo">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta quasi quis saepe id itaque accusantium quia possimus corporis aut aliquid iusto ducimus dolorem, rerum nulla veniam, eius distinctio, nobis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident porro obcaecati consectetur vero ipsam, sit iste esse sunt dolor corporis corrupti, veritatis quidem! Tenetur corrupti quidem, ratione quas saepe quod.
+    </div>
+    <div class="conteudo">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta quasi quis saepe id itaque accusantium quia possimus corporis aut aliquid iusto ducimus dolorem, rerum nulla veniam, eius distinctio, nobis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident porro obcaecati consectetur vero ipsam, sit iste esse sunt dolor corporis corrupti, veritatis quidem! Tenetur corrupti quidem, ratione quas saepe quod.
+    </div>
+    <div class="conteudo">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta quasi quis saepe id itaque accusantium quia possimus corporis aut aliquid iusto ducimus dolorem, rerum nulla veniam, eius distinctio, nobis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident porro obcaecati consectetur vero ipsam, sit iste esse sunt dolor corporis corrupti, veritatis quidem! Tenetur corrupti quidem, ratione quas saepe quod.
+    </div>
+    
   </div>
 </template>
 
@@ -74,5 +96,22 @@ img{
 }
 .ler-mais:hover {
   text-decoration: underline;
+}
+.rodape {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: #2e2f30;
+  color: aliceblue;
+  padding: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+.conteudo{
+  display: flex;
+  flex: 1;
+  margin: 1rem;
+  width: 40vw;
+  text-align: justify;
 }
 </style>
