@@ -1,7 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import  { useScreen } from '@/composables/screen'
+import { useScreen } from '@/composables/screen'
+import Rodape from './Rodape.vue';
 
 const produtos = ref([]);
 const { browserWidth, deviceWidth, isMobile } = useScreen();
@@ -32,21 +33,7 @@ const formatPrice = (price) => `R$ ${price.toFixed(2).replace('.', ',')}`;
       </div>
     </div>
   </div>
-  <div class="rodape">
-    <div class="conteudo">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta quasi quis saepe id itaque accusantium quia possimus corporis aut aliquid iusto ducimus dolorem, rerum nulla veniam, eius distinctio, nobis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident porro obcaecati consectetur vero ipsam, sit iste esse sunt dolor corporis corrupti, veritatis quidem! Tenetur corrupti quidem, ratione quas saepe quod.
-    </div>
-    <div class="conteudo">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta quasi quis saepe id itaque accusantium quia possimus corporis aut aliquid iusto ducimus dolorem, rerum nulla veniam, eius distinctio, nobis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident porro obcaecati consectetur vero ipsam, sit iste esse sunt dolor corporis corrupti, veritatis quidem! Tenetur corrupti quidem, ratione quas saepe quod.
-    </div>
-    <div class="conteudo">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta quasi quis saepe id itaque accusantium quia possimus corporis aut aliquid iusto ducimus dolorem, rerum nulla veniam, eius distinctio, nobis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident porro obcaecati consectetur vero ipsam, sit iste esse sunt dolor corporis corrupti, veritatis quidem! Tenetur corrupti quidem, ratione quas saepe quod.
-    </div>
-    <div class="conteudo">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta quasi quis saepe id itaque accusantium quia possimus corporis aut aliquid iusto ducimus dolorem, rerum nulla veniam, eius distinctio, nobis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident porro obcaecati consectetur vero ipsam, sit iste esse sunt dolor corporis corrupti, veritatis quidem! Tenetur corrupti quidem, ratione quas saepe quod.
-    </div>
-    
-  </div>
+  <Rodape />
 </template>
 
 <style scoped>
@@ -96,22 +83,5 @@ img{
 }
 .ler-mais:hover {
   text-decoration: underline;
-}
-.rodape {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  background-color: #2e2f30;
-  color: aliceblue;
-  padding: 1rem;
-  margin-top: 1rem;
-  text-align: center;
-}
-.conteudo{
-  display: flex;
-  flex: 1;
-  margin: 1rem;
-  width: 40vw;
-  text-align: justify;
 }
 </style>
