@@ -1,5 +1,8 @@
 <script setup>
 import { useScreen } from '@/composables/screen'
+import CartPlus from 'vue-material-design-icons/CartPlus.vue';
+import Account from 'vue-material-design-icons/Account.vue';
+import Menu from 'vue-material-design-icons/Home.vue';
 
 const { isMobile } = useScreen();
 </script>
@@ -53,11 +56,19 @@ const { isMobile } = useScreen();
     </div>
   </div>
   <div v-if="isMobile" class="botoes-mobile">
-    <div class="botao">Home</div>
-    <div class="botao">Carrinho</div>
-    <div class="botao">User</div>
-    <div class="botao">Sobre Nós</div>
-  </div>
+    <button class="botao">
+        <Menu />
+    </button>
+    <button class="botao">
+        <CartPlus />
+    </button>
+    <button class="botao">
+        <Account />
+    </button>
+    <button class="botao">
+        <img src="../../logo.png" alt="Logo" />
+    </button>
+</div>
 </template>
 
 <style scoped>
@@ -84,4 +95,20 @@ const { isMobile } = useScreen();
   width: 40vw;
   text-align: justify;
 }
+.botoes-mobile{
+    text-align: center;
+    position: sticky;
+    bottom: 0;
+}
+.botao{
+    border: 1px solid black;
+    width: 25vw;
+    height: 10vh;
+    background-color: none;
+}
+img{
+    width: 40%;
+    height: 30%;
+    border: none;
+    background-color: none;}
 </style>
