@@ -96,19 +96,26 @@ const { isMobile } = useScreen();
   text-align: justify;
 }
 .botoes-mobile{
+    display: flex;
     text-align: center;
     position: sticky;
     bottom: 0;
 }
 .botao{
-    border: 1px solid black;
-    width: 25vw;
-    height: 10vh;
-    background-color: none;
+  display: grid;
+  place-items: center;
+  width: 25%;
+  height: 2.5rem;
+  background-color: rgb(78, 97, 96);
+  border: none;
+}
+.botao:hover{
+  transition: 0.5s;
+  background-color: rgb(138, 160, 159);
 }
 img{
-    width: 40%;
-    height: 30%;
-    border: none;
-    background-color: none;}
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+    }
 </style>
