@@ -15,13 +15,15 @@ const menuAberto = ref(false);
       </div>
       <nav>
         <ul :class="menuAberto ? 'menu' : ''">
-          <li>Home</li>
+          <li>
+            <RouterLink to="/" class="paginas">Home</RouterLink>
+          </li>
           <li>Eletrônicos</li>
           <li>Jóias</li>
           <li>Masculino</li>
           <li>Feminino</li>
           <li>
-           <RouterLink to="/aboutus">Sobre Nós</RouterLink>
+           <RouterLink to="/aboutus" class="paginas">Sobre Nós</RouterLink>
           </li>
         </ul>
       </nav>
@@ -43,7 +45,13 @@ const menuAberto = ref(false);
     position: sticky;
     top: 0;
   }
-  
+ .paginas{
+    text-decoration: none;
+    color: black;
+  }
+  .paginas:hover{
+    color: lightcoral;
+  }
   .header--logo {
     display: flex;
     align-items: center;
