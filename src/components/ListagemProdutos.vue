@@ -10,6 +10,7 @@ const { browserWidth, deviceWidth, isMobile } = useScreen();
 onMounted(async () => {
   const response = await axios.get('https://fakestoreapi.com/products')
   produtos.value = response.data
+  console.log(response.data)
 })
 
 const formatPrice = (price) => `R$ ${price.toFixed(2).replace('.', ',')}`;
@@ -29,7 +30,12 @@ const formatPrice = (price) => `R$ ${price.toFixed(2).replace('.', ',')}`;
         <p>{{ produto.description.substring(0, 150) }}...</p>
         <p class="ler-mais">Ler Mais...</p>
         <img class="produto-imagem" :src="produto.image" :alt="produto.title" />
-        <p class="produto-preco">{{ formatPrice(produto.price) }}</p>
+        <span>
+          <p class="produto-preco">{{ formatPrice(produto.price) }}</p>
+          <button class="compra">
+            <RouterLink :to="{name: 'product' ,params:{id:produto.id}}" class="rota-compra">Comprar</RouterLink>
+          </button>
+        </span>
       </div>
     </div>
   </div>
@@ -44,6 +50,11 @@ img{
   width: 50%;
   display: flex;
   margin: auto;
+}
+span{
+  display: flex;
+  justify-content: space-between;
+
 }
 .container {
   display: flex;
@@ -82,5 +93,23 @@ img{
 }
 .ler-mais:hover {
   text-decoration: underline;
+}
+.compra{
+  background-color: lightcoral;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+.compra:hover{
+  background-color: red;
+  transition: 0.3s;
+}
+.rota-compra{
+  text-decoration: none;
+  color: white;
 }
 </style>
