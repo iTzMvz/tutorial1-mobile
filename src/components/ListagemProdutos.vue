@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { useScreen } from '@/composables/screen'
-import Rodape from './Rodape.vue';
+
 
 const produtos = ref([]);
 const { browserWidth, deviceWidth, isMobile } = useScreen();

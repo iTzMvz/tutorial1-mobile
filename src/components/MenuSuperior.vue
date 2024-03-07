@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-
+import { RouterLink } from 'vue-router';
 import CartPlus from 'vue-material-design-icons/CartPlus.vue';
 import Account from 'vue-material-design-icons/Account.vue';
 import Menu from 'vue-material-design-icons/Menu.vue';
@@ -20,6 +20,9 @@ const menuAberto = ref(false);
           <li>Jóias</li>
           <li>Masculino</li>
           <li>Feminino</li>
+          <li>
+           <RouterLink to="/aboutus">Sobre Nós</RouterLink>
+          </li>
         </ul>
       </nav>
       <div class="header--icons">
@@ -37,6 +40,8 @@ const menuAberto = ref(false);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
   }
   
   .header--logo {

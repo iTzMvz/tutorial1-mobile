@@ -1,11 +1,7 @@
 <script setup>
-import ListagemProdutos from '@/components/ListagemProdutos.vue';
-import MenuSuperior from '@/components/MenuSuperior.vue';
-import Rodape from '@/components/Rodape.vue';
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <MenuSuperior />
-  <ListagemProdutos />
-  <Rodape />
+  <RouterView />
 </template>
