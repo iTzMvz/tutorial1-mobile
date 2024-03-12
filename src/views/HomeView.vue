@@ -1,11 +1,13 @@
 <script setup>
-  import Rodape from '@/components/Rodape.vue'
   import MenuSuperior from '@/components/MenuSuperior.vue'
   import ListagemProdutos from '@/components/ListagemProdutos.vue'
+  import { useMonitor } from '@/composables/monitor';
+
+  const { menu } = useMonitor()
 </script>
 
 <template>
   <MenuSuperior />
   <ListagemProdutos />
-  <Rodape />
+  <component :is="menu" />
 </template>

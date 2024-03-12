@@ -1,18 +1,14 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import { useScreen } from '@/composables/screen'
-import { formatPrice } from '@/stores/price';
+import { formatPrice } from '@/stores/price'
 
-
-const produtos = ref([]);
-const { browserWidth, deviceWidth, isMobile } = useScreen();
+const produtos = ref([])
 
 onMounted(async () => {
   const response = await axios.get('https://fakestoreapi.com/products')
   produtos.value = response.data
 })
-
 </script>
 
 <template>
@@ -22,13 +18,13 @@ onMounted(async () => {
       <div class="card" v-for="produto in produtos" :key="produto.id">
         <h1 class="produto-nome">{{ produto.title.substring(0, 15) }}...</h1>
         <p>{{ produto.description.substring(0, 150) }}...</p>
-        <p class="ler-mais">Ler Mais...</p>
+        <RouterLink :to="{ name: 'product', params: { id: produto.id } }" class="rota-compra"
+          >Ler mais...</RouterLink
+        >
         <img class="produto-imagem" :src="produto.image" :alt="produto.title" />
         <span>
           <p class="produto-preco">{{ formatPrice(produto.price) }}</p>
-          <button class="compra">
-            <RouterLink :to="{name: 'product' ,params:{id:produto.id}}" class="rota-compra">Comprar</RouterLink>
-          </button>
+          <button class="compra">Comprar</button>
         </span>
       </div>
     </div>
@@ -40,15 +36,14 @@ h1 {
   text-align: center;
   margin-top: 1rem;
 }
-img{
+img {
   width: 50%;
   display: flex;
   margin: auto;
 }
-span{
+span {
   display: flex;
   justify-content: space-between;
-
 }
 .container {
   display: flex;
@@ -58,7 +53,9 @@ span{
 }
 .card {
   background: #fff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.19),
+    0 6px 6px rgba(0, 0, 0, 0.23);
   padding: 1rem;
   margin: 1rem;
   border-radius: 0.5rem;
@@ -85,10 +82,7 @@ span{
   margin-top: 0.5rem;
   color: #007bff;
 }
-.ler-mais:hover {
-  text-decoration: underline;
-}
-.compra{
+.compra {
   background-color: lightcoral;
   color: white;
   padding: 0.5rem 1rem;
@@ -98,12 +92,14 @@ span{
   font-size: 1.2rem;
   margin-top: 0.5rem;
 }
-.compra:hover{
+.compra:hover {
   background-color: red;
   transition: 0.3s;
 }
-.rota-compra{
+.rota-compra {
   text-decoration: none;
-  color: white;
+}
+.rota-compra:hover {
+  text-decoration: underline;
 }
 </style>
