@@ -1,47 +1,53 @@
 <script setup>
-import CartPlus from 'vue-material-design-icons/CartPlus.vue';
-import Account from 'vue-material-design-icons/Account.vue';
-import Menu from 'vue-material-design-icons/Home.vue';
-
+import CartPlus from 'vue-material-design-icons/CartPlus.vue'
+import Account from 'vue-material-design-icons/Account.vue'
+import Menu from 'vue-material-design-icons/Home.vue'
 </script>
 <template>
-<div class="botoes-mobile">
+  <div class="botoes-mobile">
+    <RouterLink to="/" class="rota">
+      <button class="botao">
+        <Menu/>
+      </button>
+    </RouterLink>
     <button class="botao">
-        <Menu />
+      <CartPlus />
     </button>
     <button class="botao">
-        <CartPlus />
+      <Account />
     </button>
-    <button class="botao">
-        <Account />
-    </button>
-    <button class="botao">
+    <RouterLink to="/aboutus" class="rota">
+      <button class="botao">
         <img src="../../logo.png" alt="Logo" />
-    </button>
-</div>
+      </button>
+    </RouterLink>
+  </div>
 </template>
 <style scoped>
-.botoes-mobile{
-    display: flex;
-    text-align: center;
-    position: sticky;
-    bottom: 0;
+.botoes-mobile {
+  display: flex;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
 }
-.botao{
+.botao {
   display: grid;
   place-items: center;
-  width: 25%;
+  width: 100%;
   height: 2.5rem;
   background-color: rgb(78, 97, 96);
   border: none;
 }
-.botao:hover{
+.botao:hover {
   transition: 0.5s;
   background-color: rgb(138, 160, 159);
 }
-img{
-    width: 50%;
-    height: 50%;
-    object-fit: contain;
-    }
+.rota{
+    width: 100%;
+}
+img {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+}
 </style>

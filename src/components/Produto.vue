@@ -81,4 +81,9 @@ onMounted(async () => {
   transition: 0.2s;
   
 }
+@media screen and (max-width: 768px){
+  .imagem-produto{
+    width: 50%;
+  }
+}
 </style>
