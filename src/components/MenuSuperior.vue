@@ -89,7 +89,7 @@ nav li {
   display: none;
 }
 nav .carrinho {
-    width: 15vw;
+    width: 20vw;
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -131,6 +131,9 @@ nav .carrinho {
   nav .carrinho li {
     display: block;
     margin-top: 12px;
+  }
+  nav .carrinho{
+    width: 45vw
   }
 }
 </style>

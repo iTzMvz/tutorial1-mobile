@@ -7,12 +7,14 @@ import Menu from 'vue-material-design-icons/Home.vue'
   <div class="botoes-mobile">
     <RouterLink to="/" class="rota">
       <button class="botao">
-        <Menu/>
+        <Menu />
       </button>
     </RouterLink>
-    <button class="botao">
-      <CartPlus />
-    </button>
+    <RouterLink to="/cart" class="rota">
+      <button class="botao">
+        <CartPlus />
+      </button>
+    </RouterLink>
     <button class="botao">
       <Account />
     </button>
@@ -42,8 +44,8 @@ import Menu from 'vue-material-design-icons/Home.vue'
   transition: 0.5s;
   background-color: rgb(138, 160, 159);
 }
-.rota{
-    width: 100%;
+.rota {
+  width: 100%;
 }
 img {
   width: 50%;

@@ -27,35 +27,33 @@ h1 {
 }
 
 .produtos {
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem;
-  margin: 2%;
+  margin-left: 2%;
 }
 .item {
   display: flex;
   justify-content: space-between;
-  width: 40%;
+  width: 45%;
   border: 2px solid black;
   border-radius: 10px;
   flex-wrap: wrap;
+  padding: 10px;
 }
 .nome {
-  padding: 10px;
-  width: 75%;
+  padding: 5px;
 }
 .preco {
-  padding: 10px;
+  padding: 5px;
 }
 .imagem {
   width: 20%;
   padding: 10px;
   margin: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  object-fit: contain;
 }
 .info-carrinho {
   font-size: 2rem;
@@ -73,6 +71,8 @@ h1 {
   .imagem {
     width: 30%;
     height: 30%;
+    object-fit: contain;
+    padding: 0;
   }
 }
 </style>

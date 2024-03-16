@@ -51,10 +51,9 @@ hr {
 .imagem {
   width: 60px;
   height: 60px;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  object-fit: contain;
+  padding: 5px;
+  
 }
 .ver-carrinho {
   padding: 5px;
