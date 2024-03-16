@@ -3,7 +3,6 @@ import { useCarrinhoStore } from '@/stores/carrinho'
 import { formatPrice } from '@/stores/price'
 
 const { carrinho } = useCarrinhoStore()
-
 </script>
 
 <template>
@@ -12,11 +11,13 @@ const { carrinho } = useCarrinhoStore()
       <div class="nome">{{ item.title }}</div>
       <div class="preco">{{ formatPrice(item.price) }}</div>
       <img :src="item.image" alt="" class="imagem" />
-      <button @click="removeItem(index)">X</button>
     </div>
     <div class="info-carrinho">
       <hr />
       <div>Total: {{ formatPrice(carrinho.reduce((acc, item) => acc + item.price, 0)) }}</div>
+      <div class="ver-carrinho">
+        <RouterLink to="/cart" class="paginas">Ver Carrinho</RouterLink>
+      </div>
     </div>
   </div>
 </template>
@@ -67,5 +68,12 @@ hr {
 }
 ::-webkit-scrollbar {
   display: none;
+}
+.paginas {
+  text-decoration: none;
+  color: black;
+}
+.paginas:hover {
+  color: lightcoral;
 }
 </style>
