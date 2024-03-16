@@ -2,13 +2,20 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { formatPrice } from '@/stores/price'
+import { useCarrinhoStore } from '@/stores/carrinho';
 
 const produtos = ref([])
+const { carrinho, addProduct } = useCarrinhoStore(); 
 
 onMounted(async () => {
   const response = await axios.get('https://fakestoreapi.com/products')
   produtos.value = response.data
 })
+function addCarrinho (produto){
+  addProduct(produto)
+  console.log(carrinho)
+}
+
 </script>
 
 <template>
@@ -24,7 +31,7 @@ onMounted(async () => {
         <img class="produto-imagem" :src="produto.image" :alt="produto.title" />
         <span>
           <p class="produto-preco">{{ formatPrice(produto.price) }}</p>
-          <button class="compra">Comprar</button>
+          <button class="compra" @click="addCarrinho(produto)">Comprar</button>
         </span>
       </div>
     </div>
