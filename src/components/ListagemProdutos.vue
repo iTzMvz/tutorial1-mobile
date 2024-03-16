@@ -1,18 +1,18 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { formatPrice } from '@/stores/price'
-import { useCarrinhoStore } from '@/stores/carrinho';
-import axios from 'axios'
+import { useCarrinhoStore } from '@/stores/carrinho'
+import ProdutosApi from '../api/produtos'
 
-const { addProduct } = useCarrinhoStore(); 
+const { addProduct } = useCarrinhoStore()
+const produtosApi = new ProdutosApi()
 const produtos = ref([])
 
 onMounted(async () => {
-  const response = await axios.get('https://fakestoreapi.com/products')
-  produtos.value = response.data
+  produtos.value = await produtosApi.buscarTodosProdutos()
 })
 
-function addCarrinho (produto){
+function addCarrinho(produto) {
   addProduct(produto)
 }
 </script>

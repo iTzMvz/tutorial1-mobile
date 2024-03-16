@@ -3,12 +3,14 @@ import axios from 'axios';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { formatPrice } from '@/stores/price';
+import ProdutosApi from '../api/produtos'
 
+const produtosApi = new ProdutosApi()
 const route = useRoute()
 const produto = ref([])
+
 onMounted(async () => {
-  const response = await axios.get('https://fakestoreapi.com/products/' + route.params.id)
-  produto.value = response.data
+  produto.value = await produtosApi.buscarProduto(route.params.id)
 })
 </script>
 <template>
