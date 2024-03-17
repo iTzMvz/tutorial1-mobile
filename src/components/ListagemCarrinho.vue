@@ -2,7 +2,7 @@
 import { useCarrinhoStore } from '@/stores/carrinho'
 import { formatPrice } from '@/stores/price'
 
-const { carrinho } = useCarrinhoStore()
+const { carrinho, removeProduct } = useCarrinhoStore()
 </script>
 
 <template>
@@ -10,14 +10,17 @@ const { carrinho } = useCarrinhoStore()
     <div class="item" v-for="(item, index) in carrinho" :key="index">
       <div class="nome">{{ item.title }}</div>
       <div class="preco">{{ formatPrice(item.price) }}</div>
+      <div class="quantidade">{{ item.amount }}</div>
+      <button @click="removeProduct(item.id)">X</button>
       <img :src="item.image" alt="" class="imagem" />
     </div>
     <div class="info-carrinho">
       <hr />
-      <div>Total: {{ formatPrice(carrinho.reduce((acc, item) => acc + item.price, 0)) }}</div>
-      <div class="ver-carrinho">
-        <RouterLink to="/cart" class="paginas">Ver Carrinho</RouterLink>
-      </div>
+      <div class="preco-total">Total: {{ formatPrice(carrinho.reduce((acc, item) => acc + item.price, 0)) }}</div>
+      <RouterLink to="/cart" class="paginas">
+        <button class="ver-carrinho">Ver Carrinho</button>
+      </RouterLink>
+        <button class="ver-carrinho">Limpar Carrinho</button>
     </div>
   </div>
 </template>
@@ -53,17 +56,24 @@ hr {
   height: 60px;
   object-fit: contain;
   padding: 5px;
-  
 }
 .ver-carrinho {
+  display: flex;
+  justify-content: center;
+  margin: 4% auto;
   padding: 5px;
   border: 2px solid black;
   border-radius: 10px;
-  text-align: center;
+  width: 100%;
+  font-size: 1.2rem;
+  background-color: white;
   cursor: pointer;
   position: sticky;
   bottom: 0;
-  margin: 5px;
+}
+.preco-total {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 ::-webkit-scrollbar {
   display: none;
@@ -72,7 +82,7 @@ hr {
   text-decoration: none;
   color: black;
 }
-.paginas:hover {
+.ver-carrinho:hover {
   color: lightcoral;
 }
 </style>

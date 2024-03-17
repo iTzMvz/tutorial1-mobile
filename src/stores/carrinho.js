@@ -6,5 +6,13 @@ export const useCarrinhoStore = defineStore('carrinho', () => {
     const addProduct = (product) => {
         carrinho.value.push(product)
     }
-    return { carrinho, addProduct  }
+    const removeProduct = (index) => {
+        carrinho.value.forEach((item, i) => {
+            console.log(item)
+            if (item.id == index) {
+                carrinho.value.splice(i, 1)
+            }
+        })
+    }
+    return { carrinho, addProduct, removeProduct }
 })
