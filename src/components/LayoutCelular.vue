@@ -28,8 +28,7 @@ import Menu from 'vue-material-design-icons/Home.vue'
 <style scoped>
 .botoes-mobile {
   display: flex;
-  text-align: center;
-  position: sticky;
+  position: fixed;
   bottom: 0;
 }
 .botao {
