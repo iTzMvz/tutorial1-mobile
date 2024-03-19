@@ -6,23 +6,23 @@ const { carrinho, removeProduct } = useCarrinhoStore()
 </script>
 
 <template>
-  <div class="carrinho">
-    <div class="item" v-for="(item, index) in carrinho" :key="index">
-      <div class="nome">{{ item.title }}</div>
-      <div class="preco">{{ formatPrice(item.price) }}</div>
-      <div class="quantidade">{{ item.amount }}</div>
-      <button @click="removeProduct(item.id)">X</button>
-      <img :src="item.image" alt="" class="imagem" />
-    </div>
-    <div class="info-carrinho">
-      <hr />
-      <div class="preco-total">Total: {{ formatPrice(carrinho.reduce((acc, item) => acc + item.price, 0)) }}</div>
-      <RouterLink to="/cart" class="paginas">
-        <button class="ver-carrinho">Ver Carrinho</button>
-      </RouterLink>
+    <div class="menu-carrinho">
+      <div class="item" v-for="(item, index) in carrinho" :key="index">
+        <div class="nome">{{ item.title }}</div>
+        <div class="preco">{{ formatPrice(item.price) }}</div>
+        <div class="quantidade">{{ item.amount }}</div>
+        <button class="remover" @click="removeProduct(item.id)">X</button>
+        <img :src="item.image" alt="" class="imagem" />
+      </div>
+      <div class="info-carrinho">
+        <hr />
+        <div class="preco-total">Total: {{ formatPrice(carrinho.reduce((acc, item) => acc + item.price, 0)) }}</div>
+        <RouterLink to="/cart" class="paginas">
+          <button class="ver-carrinho">Ver Carrinho</button>
+        </RouterLink>
         <button class="ver-carrinho">Limpar Carrinho</button>
+      </div>
     </div>
-  </div>
 </template>
 
 <style scoped>
@@ -30,7 +30,7 @@ hr {
   margin: 1rem 0;
   border: 1px solid black;
 }
-.carrinho {
+.menu-carrinho {
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -74,6 +74,16 @@ hr {
 .preco-total {
   font-size: 1.2rem;
   font-weight: bold;
+}
+.remover{
+  background-color: rgba(255, 255, 255, 0);
+  color: red;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 5px;
+  position: absolute;
+  right: 1%;
 }
 ::-webkit-scrollbar {
   display: none;

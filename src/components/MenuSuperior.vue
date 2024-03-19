@@ -28,11 +28,7 @@ const carrinnhoAberto = ref(false)
           <RouterLink to="/aboutus" class="paginas">Sobre Nós</RouterLink>
         </li>
       </ul>
-      <ul :class="carrinnhoAberto ? 'carrinho' : 'carrinho-itens'">
-        <li>
-          <ListagemCarrinho />
-        </li>
-      </ul>
+      <ListagemCarrinho :class="carrinnhoAberto ? 'carrinho' : 'carrinho-itens'"/>
     </nav>
     <div class="header--icons">
       <Account />
@@ -98,8 +94,8 @@ nav .carrinho {
       0 10px 20px rgba(0, 0, 0, 0.19),
       0 6px 6px rgba(0, 0, 0, 0.23);
     border-radius: 10px;
-    right: 0;
-    padding: 10px 16px;
+    right: 10px;
+    padding: 10px 30px;
   }
 
 @media (max-width: 768px) {
