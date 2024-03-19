@@ -37,6 +37,7 @@ hr {
   gap: 1rem;
   overflow: scroll;
   max-height: 80vh;
+  margin-right: 15px;
 }
 .item {
   display: flex;
