@@ -8,7 +8,6 @@ export const useCarrinhoStore = defineStore('carrinho', () => {
     }
     const removeProduct = (index) => {
         carrinho.value.forEach((item, i) => {
-            console.log(item)
             if (item.id == index) {
                 carrinho.value.splice(i, 1)
             }
