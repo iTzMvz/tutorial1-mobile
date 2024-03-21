@@ -20,10 +20,26 @@ const carrinnhoAberto = ref(false)
         <li>
           <RouterLink to="/" class="paginas">Home</RouterLink>
         </li>
-        <li>Eletrônicos</li>
-        <li>Jóias</li>
-        <li>Masculino</li>
-        <li>Feminino</li>
+        <li>
+          <RouterLink :to="{ name: 'products', params: { type: null }}">
+            Eletrônicos
+          </RouterLink>
+        </li>
+        <li>
+          <RouterLink :to="{ name: 'products', params: { type: null }}">
+            Jóias
+          </RouterLink>
+        </li>
+        <li>
+          <RouterLink :to="{ name: 'products', params: { type: null }}">
+            Masculino
+          </RouterLink>
+        </li>
+        <li>
+          <RouterLink :to="{ name: 'products', params: { type: produto.id } }">
+            Feminino
+          </RouterLink>
+        </li>
         <li>
           <RouterLink to="/aboutus" class="paginas">Sobre Nós</RouterLink>
         </li>
