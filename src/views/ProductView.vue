@@ -11,7 +11,3 @@ const { menu } = useMonitor()
     <Produto />
     <component :is="menu" />
 </template>
-
-<style scoped>
-
-</style>
